@@ -1,1 +1,1 @@
-# flipwallet.github.io
+# Wallet UI
