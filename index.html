@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FlipWallet for Bitcoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <header>
+        <nav class="black">
+            <div class="nav-wrapper">
+                <a class="brand-logo">FlipWallet</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div ng-if="!isBlocked" class="note blue blue-note lighten-4 center-align">
+            <i class="material-icons" style="vertical-align: bottom; margin-right: 5px">info_outline</i> Wallet Addresses are generated using your browser's fingerprint
+        </div>
+        <div ng-if="isBlocked" class="note red red-note lighten-4 center-align">
+            <i class="material-icons" style="vertical-align: bottom; margin-right: 5px">warning</i> Your account has been permanently blocked for violating our terms.
+        </div>
+        <div class="section hide-on-small-only"></div>
+        <div class="page">
+            <div id="wallet" class="row center-align">
+                <div class="col s12 m6">
+                    <h5>Your Wallet Address</h5>
+                    <div id="qrcode"></div>
+                    <h6 class="blue-text text-darken-3">{{walletAddress}}</h6>
+                </div>
+                <div class="col s12 hide-on-med-and-up">
+                    <br>
+                    <hr>
+                </div>
+                <div class="col s12 m6">
+                    <h5>Withdraw Money</h5>
+                    <h6 ng-if="!isBlocked" class="blue-text text-darken-3">Current Balance - {{btcBalance}}</h6>
+                    <h6 ng-if="isBlocked" class="grey-text">Current Balance - 0.00 BTC</h6>
+                    
+                    <div class="row"></div>
+
+                    <div class="row">
+											<a ng-click="withdrawMoney('b')" class="btn green wButton"><i class="material-icons left">account_balance</i> To Bank</a>
+										</div>
+										
+										<div class="row">
+                      <a ng-click="withdrawMoney('p')" class="btn grey lighten-3 blue-text text-darken-3 wButton"><i class="material-icons left">attach_money</i> To PayPal</a>
+                    </div>
+                    
+										<div class="row">
+											<a ng-click="withdrawMoney('a')" class="btn orange darken-1 wButton"><i class="material-icons left">shopping_cart</i> To Amazon</a>
+										</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- <footer class="page-footer blue-grey darken-4">
+        <div class="footer-copyright">
+            <div class="container center-align white-text">
+							Ⓒ DynoWallet 2019
+            </div>
+        </div>
+    </footer> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.8.0/fingerprint2.min.js"></script>
+    <script src="script.js?v=409"></script>
+</body>
+
+</html>

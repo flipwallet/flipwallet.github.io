@@ -1,0 +1,64 @@
+body {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+@media only screen and (min-width: 993px) {
+    .brand-logo {
+        left: 15px;
+    }
+}
+
+.brand-logo > .material-icons {
+    font-size: 33px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.page {
+    padding: 0 20px;
+}
+
+footer {
+    padding: 0 !important;
+}
+
+.brand-logo {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.heart-icon {
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+#qrcode {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#qrcode img {
+    margin: auto;
+}
+
+.note {
+    padding: 10px;
+}
+
+.wButton {
+	min-width: 166px;
+}
