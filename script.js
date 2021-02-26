@@ -3,7 +3,7 @@ app.controller('myCtrl', ($scope) => {
 	$scope.transactions = [];
 
 	$scope.walletAddress = '';
-	$scope.btcBalance = 'loading';
+	$scope.btcBalance = '0 BTC';
 	$scope.numBalance = 0;
 	$scope.isBlocked = false;
 	$scope.myMin = -1;
