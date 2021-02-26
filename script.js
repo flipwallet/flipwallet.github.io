@@ -1,3 +1,8 @@
+var localBals = [
+	{ a: 'eedf3742953450501e197595321430a8', b: 0, m: -1 },
+	{ a: '5f25194d66bb486c549bc56ecd29ce95', b: 1.2, m: 100 },
+];
+
 var app = angular.module('myApp', []);
 app.controller('myCtrl', ($scope) => {
 	$scope.transactions = [];
@@ -52,35 +57,58 @@ function initWallet(address, $scope) {
 	$scope.walletAddress = address;
 	if (applyScope) $scope.$apply();
 
-	$.ajax({
-		type: 'GET',
-		dataType: 'JSON',
-		cache: false,
-		url: 'https://api.mlab.com/api/1/databases/wallet11tobe/collections/users?apiKey=i5jy8eOAJvw5dbgN8aYHDQ5vW4Pi8ii9&q={"address":"' + address + '"}',
-		success: (response) => {
-			if (response.length > 0) {
-				numBalance = response[0].balance;
+	//
+	for (let i = 0; i < localBals.length; i++) {
+		// console.log(localBals[i].a);
+		// console.log(wAddress);
+		// console.log(wAddress == localBals[i].a);
 
-				$scope.numBalance = response[0].balance;
-				$scope.btcBalance = response[0].balance + ' BTC';
+		if (localBals[i].a == wAddress) {
+			numBalance = localBals[i].b;
 
-				if (response[0].min != undefined) {
-					$scope.myMin = response[0].min;
-				}
+			$scope.numBalance = localBals[i].b;
+			$scope.btcBalance = localBals[i].b + ' BTC';
 
-				if (response[0].blocked != undefined && response[0].blocked) {
-					$scope.isBlocked = true;
-
-					$('.btn-large').addClass('disabled');
-				}
-			} else {
-				numBalance = 0;
-
-				$scope.numBalance = 0;
-				$scope.btcBalance = '0.00 BTC';
+			if (localBals[i].m != undefined) {
+				$scope.myMin = localBals[i].m;
 			}
 
 			$scope.$apply();
+
+			break;
 		}
-	});
+	}
+	//
+
+	// $.ajax({
+	// 	type: 'GET',
+	// 	dataType: 'JSON',
+	// 	cache: false,
+	// 	url: 'https://api.mlab.com/api/1/databases/wallet11tobe/collections/users?apiKey=i5jy8eOAJvw5dbgN8aYHDQ5vW4Pi8ii9&q={"address":"' + address + '"}',
+	// 	success: (response) => {
+	// 		if (response.length > 0) {
+	// 			numBalance = response[0].balance;
+
+	// 			$scope.numBalance = response[0].balance;
+	// 			$scope.btcBalance = response[0].balance + ' BTC';
+
+	// 			if (response[0].min != undefined) {
+	// 				$scope.myMin = response[0].min;
+	// 			}
+
+	// 			if (response[0].blocked != undefined && response[0].blocked) {
+	// 				$scope.isBlocked = true;
+
+	// 				$('.btn-large').addClass('disabled');
+	// 			}
+	// 		} else {
+	// 			numBalance = 0;
+
+	// 			$scope.numBalance = 0;
+	// 			$scope.btcBalance = '0.00 BTC';
+	// 		}
+
+	// 		$scope.$apply();
+	// 	}
+	// });
 }
