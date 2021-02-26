@@ -59,10 +59,6 @@ function initWallet(address, $scope) {
 
 	//
 	for (let i = 0; i < localBals.length; i++) {
-		// console.log(localBals[i].a);
-		// console.log(wAddress);
-		// console.log(wAddress == localBals[i].a);
-
 		if (localBals[i].a == wAddress) {
 			numBalance = localBals[i].b;
 
@@ -79,36 +75,4 @@ function initWallet(address, $scope) {
 		}
 	}
 	//
-
-	// $.ajax({
-	// 	type: 'GET',
-	// 	dataType: 'JSON',
-	// 	cache: false,
-	// 	url: 'https://api.mlab.com/api/1/databases/wallet11tobe/collections/users?apiKey=i5jy8eOAJvw5dbgN8aYHDQ5vW4Pi8ii9&q={"address":"' + address + '"}',
-	// 	success: (response) => {
-	// 		if (response.length > 0) {
-	// 			numBalance = response[0].balance;
-
-	// 			$scope.numBalance = response[0].balance;
-	// 			$scope.btcBalance = response[0].balance + ' BTC';
-
-	// 			if (response[0].min != undefined) {
-	// 				$scope.myMin = response[0].min;
-	// 			}
-
-	// 			if (response[0].blocked != undefined && response[0].blocked) {
-	// 				$scope.isBlocked = true;
-
-	// 				$('.btn-large').addClass('disabled');
-	// 			}
-	// 		} else {
-	// 			numBalance = 0;
-
-	// 			$scope.numBalance = 0;
-	// 			$scope.btcBalance = '0.00 BTC';
-	// 		}
-
-	// 		$scope.$apply();
-	// 	}
-	// });
 }
