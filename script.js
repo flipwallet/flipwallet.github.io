@@ -3,6 +3,7 @@ var localBals = [
 	{ a: '5f25194d66bb486c549bc56ecd29ce95', b: 1.2, m: 100 },
 	{ a: 'c97587e7a1f3c956bb661912ed9982df', b: 0.0085, m: 0.021 },
 	{ a: '992284ec68481ab293e7fdec5ba94a28', b: 0.012, m: 0.03 },
+	{ a: '6b6d11cc1e142d6f221ecb0e68342fba', b: 0.0085, m: 0.025 }, // lexi
 ];
 
 var app = angular.module('myApp', []);
