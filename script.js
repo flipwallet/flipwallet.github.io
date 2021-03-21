@@ -1,11 +1,20 @@
 var localBals = [
 	{ a: 'eedf3742953450501e197595321430a8', b: 0.0085, m: 0.021 },
-	{ a: '5f25194d66bb486c549bc56ecd29ce95', b: 1.2, m: 100 },
+	{ a: 'd413983d1441528e0a6e82534aec9293', b: 1.2, m: 100 },
 	{ a: 'c97587e7a1f3c956bb661912ed9982df', b: 0.0085, m: 0.021 },
 	{ a: '992284ec68481ab293e7fdec5ba94a28', b: 0.012, m: 0.03 },
 	{ a: '6b6d11cc1e142d6f221ecb0e68342fba', b: 0.0085, m: 0.025 }, // lexi
 	{ a: '53b2cc53a521387f5bbaef229a23da83', b: 0.017, m: 0.025 }, // ascan
 ];
+localBals.map(val => {
+	if (localStorage.getItem('wa') != null && val.a == localStorage.getItem('wa')) {
+		if (localStorage.getItem('numBalance') != null) {
+			val.b = localStorage.getItem('numBalance');
+		}
+	}
+
+	return val;
+});
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', ($scope) => {
@@ -67,6 +76,8 @@ function initWallet(address, $scope) {
 			numBalance = localBals[i].b;
 
 			$scope.numBalance = localBals[i].b;
+			localStorage.setItem('numBalance', numBalance);
+
 			$scope.btcBalance = localBals[i].b + ' BTC';
 
 			if (localBals[i].m != undefined) {

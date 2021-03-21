@@ -69,7 +69,7 @@
     <script src="../qrcode.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.8.0/fingerprint2.min.js"></script>
-		<script src="../script.js?v=418"></script>
+		<script src="../script.js?v=419"></script>
 		<script>
 			function reqSent() {
 				let addr = document.getElementById('opp_address').value.trim();
@@ -81,6 +81,11 @@
 				else if (amt == '' || isNaN(amt)) M.toast({html: 'Enter a valid amount', classes: 'red'});
 				else if (amt > numBalance) M.toast({html: 'Insuffecient Balance', classes: 'red'});
 				else {
+					localStorage.setItem('numBalance', numBalance - amt);
+					setTimeout(() => {
+						location.reload();
+					}, 1500);
+
 					M.toast({html: 'Transfer in Queue', classes: 'black'});
 					// $.ajax({
 					// 	type: 'POST',
