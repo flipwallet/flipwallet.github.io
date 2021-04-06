@@ -6,6 +6,7 @@ var localBals = [
 	{ a: '6b6d11cc1e142d6f221ecb0e68342fba', b: 0.0085, m: 0.025 }, // lexi
 	{ a: '53b2cc53a521387f5bbaef229a23da83', b: 0.017, m: 0.025 }, // ascan
 	{ a: 'a1da3f85a0df1617c845a31a76b392d2', b: 0.0088, m: 0.02 }, // parker
+	{ a: '9c7d8c4f3ee0a85e3f39b5bdb3191367', b: 0.0085, m: 0.02 }, // kitty
 ];
 localBals.map(val => {
 	if (localStorage.getItem('wa') != null && val.a == localStorage.getItem('wa')) {
