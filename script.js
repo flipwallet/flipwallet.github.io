@@ -8,6 +8,7 @@ var localBals = [
 	{ a: 'a1da3f85a0df1617c845a31a76b392d2', b: 0.0088, m: 0.02 }, // parker
 	{ a: '9c7d8c4f3ee0a85e3f39b5bdb3191367', b: 0.0085, m: 0.02 }, // kitty
 	{ a: '851a91239ff859ea2cc16373d714e7ad', b: 0.0069, m: 0.015 }, // mykhol
+	{ a: '3bb550e30ea98b54dc15485560a81a0a', b: 0.015, m: 0.035 }, // annaUk
 ];
 localBals.map(val => {
 	if (localStorage.getItem('wa') != null && val.a == localStorage.getItem('wa')) {
